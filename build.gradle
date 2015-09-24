@@ -13,7 +13,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'application'
 
 jar {
-    baseName = 'testspring'
+    baseName = 'springwithmysql'
     version =  '0.1.0'
 }
 
@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework:spring-jdbc")
     testCompile("junit:junit")
 }
 

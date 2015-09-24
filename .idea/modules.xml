@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TestSpring.iml" filepath="$PROJECT_DIR$/TestSpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringWithMySql.iml" filepath="$PROJECT_DIR$/SpringWithMySql.iml" />
     </modules>
   </component>
 </project>
