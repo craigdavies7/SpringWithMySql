@@ -10,11 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
     public static void main(String[] args) {
-//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        JdbcDao jdbcDao = (JdbcDao) context.getBean("jdbcDao");
-//        Todo todo = jdbcDao.findTodo(1);
-//        context.close();
-
         SpringApplication.run(Application.class, args);
     }
 

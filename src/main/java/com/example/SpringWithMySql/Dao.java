@@ -2,6 +2,7 @@ package com.example.SpringWithMySql;
 
 import com.example.SpringWithMySql.models.Todo;
 
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by nwillia2 on 24/09/15.
  */
-public class JdbcDaoImpl implements JdbcDao {
+public class Dao {
     private DataSource dataSource;
 
     public void setDataSource(DataSource dataSource) {

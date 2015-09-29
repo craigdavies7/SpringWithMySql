@@ -1,7 +1,9 @@
 package com.example.SpringWithMySql.controllers;
 
-import com.example.SpringWithMySql.JdbcDaoImpl;
+import com.example.SpringWithMySql.JdbcDao;
 import com.example.SpringWithMySql.models.Todo;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-public class TodosController {
+public class TodosController extends ApplicationController {
 
     @ModelAttribute("todos")
     public List<Todo> todos() {
-        return new JdbcDaoImpl().getTodos();
+        return getDao().getTodos();
     }
 
     @RequestMapping("/todos")
     public String index() {
-        return "greeting";
+        // loads the todos/index view
+        return "todos/index";
     }
 
 }
