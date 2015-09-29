@@ -8,12 +8,14 @@
     <table>
         <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Description</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="todo : ${todos}">
+            <td th:text="${{todo.id}}">Test Id</td>
             <td th:text="${{todo.name}}">Test Name</td>
             <td th:text="${{todo.description}}">Test Description</td>
         </tr>

@@ -1,6 +1,8 @@
 package com.example.SpringWithMySql;
 
 import com.example.SpringWithMySql.models.Todo;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 
 import javax.sql.DataSource;
@@ -10,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by nwillia2 on 24/09/15.
@@ -21,68 +24,56 @@ public class Dao {
         this.dataSource = dataSource;
     }
 
-    public Todo findTodo(int id){
-        String sql = "SELECT * FROM TODOS WHERE ID = ?";
+    public boolean save(Todo todo) {
+        String query = "insert into todos (name, description) values (?,?)";
 
-        Connection conn = null;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-        try {
-            conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            Todo todo = null;
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                todo = new Todo(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("description")
-                );
-            }
-            rs.close();
-            ps.close();
-            return todo;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {}
-            }
-        }
+        Object[] args = new Object[] {todo.name, todo.description};
+
+        int out = jdbcTemplate.update(query, args);
+
+        return (out != 0);
+    }
+
+    public Todo getById(int id) {
+        String query =
+                "select id, name, description " +
+                "from todos " +
+                "where id = ?";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+        Todo todo = jdbcTemplate.queryForObject(query, new Object[]{id}, new Todo.TodoRowMapper());
+
+        return todo;
+    }
+
+    public boolean update(Todo todo) {
+        String query =
+                "update todos set name = ?, description = ? " +
+                "where id = ?";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        Object[] args = new Object[] {todo.name, todo.description};
+
+        int out = jdbcTemplate.update(query, args);
+        return (out != 0);
+    }
+
+    public boolean deleteById(int id) {
+
+        String query = "delete from todos where id = ?";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+        int out = jdbcTemplate.update(query, id);
+        return (out != 0);
     }
 
     public List<Todo> getTodos(){
         String sql = "SELECT * FROM TODOS";
 
-        Connection conn = null;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-        try {
-            conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            Todo todo = null;
-            ArrayList<Todo> todos = new ArrayList<>();
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                todo = new Todo(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("description")
-                );
-                todos.add(todo);
-            }
-            rs.close();
-            ps.close();
-            return todos;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {}
-            }
-        }
+        List<Todo> todos = jdbcTemplate.query(sql, new Todo.TodoRowMapper());
+        return todos;
     }
 }
