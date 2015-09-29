@@ -1,7 +1,6 @@
 package com.example.SpringWithMySql.controllers;
 
 import com.example.SpringWithMySql.Dao;
-import com.example.SpringWithMySql.JdbcDao;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

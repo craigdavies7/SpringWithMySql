@@ -1,9 +1,6 @@
 package com.example.SpringWithMySql.controllers;
 
-import com.example.SpringWithMySql.JdbcDao;
 import com.example.SpringWithMySql.models.Todo;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
