@@ -13,6 +13,8 @@ public class Todo {
     public String name;
     public String description;
 
+    public Todo(){};
+
     public Todo(long id, String name, String description) {
         this.id = id;
         this.name = name;

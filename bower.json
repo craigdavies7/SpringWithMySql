@@ -1,0 +1,21 @@
+{
+  "name": "spring_with_mysql",
+  "version": "0.0.0",
+  "homepage": "https://github.com/neilwilliams/SpringWithMySql",
+  "authors": [
+    "Neil Williams <neil.williams@southwales.ac.uk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery": "~2.1.4"
+  }
+}

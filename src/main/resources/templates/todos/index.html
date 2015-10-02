@@ -1,25 +1,31 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="todo : ${todos}">
-            <td th:text="${{todo.id}}">Test Id</td>
-            <td th:text="${{todo.name}}">Test Name</td>
-            <td th:text="${{todo.description}}">Test Description</td>
-        </tr>
-        </tbody>
-    </table>
-</body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/layout">
+    <head>
+
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div th:replace="fragments/_alert :: alert('success', ${message})"></div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="todo : ${todos}">
+                        <td th:text="${{todo.id}}">Test Id</td>
+                        <td th:text="${{todo.name}}">Test Name</td>
+                        <td th:text="${{todo.description}}">Test Description</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>
