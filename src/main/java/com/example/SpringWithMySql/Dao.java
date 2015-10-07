@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by nwillia2 on 24/09/15.
+ * Created by daviesc8 on 24/09/15.
  */
 public class Dao {
     private DataSource dataSource;
@@ -25,7 +25,7 @@ public class Dao {
     }
 
     public boolean save(Todo todo) {
-        String query = "insert into todos (name, description) values (?,?)";
+        String query = "INSERT into TODOS (name, description) values (?,?)";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -38,8 +38,8 @@ public class Dao {
 
     public Todo getById(int id) {
         String query =
-                "select id, name, description " +
-                "from todos " +
+                "SELECT id, name, description " +
+                "from TODOS " +
                 "where id = ?";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -50,10 +50,10 @@ public class Dao {
 
     public boolean update(Todo todo) {
         String query =
-                "update todos set name = ?, description = ? " +
+                "UPDATE TODOS set name = ?, description = ? " +
                 "where id = ?";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        Object[] args = new Object[] {todo.name, todo.description};
+        Object[] args = new Object[] {todo.name, todo.description, todo.id};
 
         int out = jdbcTemplate.update(query, args);
         return (out != 0);
@@ -61,7 +61,7 @@ public class Dao {
 
     public boolean deleteById(int id) {
 
-        String query = "delete from todos where id = ?";
+        String query = "DELETE from TODOS where id = ?";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
         int out = jdbcTemplate.update(query, id);

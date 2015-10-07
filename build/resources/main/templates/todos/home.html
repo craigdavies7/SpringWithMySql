@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/layout">
+
+<head>
+    <title>Developer Database Login Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div th:replace="fragments/_alert :: alert('success', ${message})"></div>
+    <h1>Welcome Page</h1>
+    <legend>Successfully signed into the Developer App</legend>
+            <a class="brand" href="http://www.thymeleaf.org"> Thymeleaf -
+                Plain </a>
+            <ul class="nav">
+                <li><a th:href="@{/todos/home}" href="home.html"> Home </a></li>
+                <li><a th:href="@{todos/logout}" href="logout"> Logout </a></li>
+            </ul>
+    </div>
+</body>
+</html>

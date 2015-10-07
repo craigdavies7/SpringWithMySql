@@ -5,7 +5,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by nwillia2 on 29/09/2015.
+ * Created by daviesc8 on 29/09/2015.
  */
 public class ApplicationController {
     public Dao getDao(){

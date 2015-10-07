@@ -5,6 +5,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
         classpath('mysql:mysql-connector-java:5.1.16')
+        classpath("org.springframework.security:spring-security-web:4.0.2.RELEASE")
     }
 }
 
@@ -12,6 +13,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
+
 
 jar {
     baseName = 'springwithmysql'
@@ -29,8 +31,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework:spring-jdbc")
     compile('mysql:mysql-connector-java:5.1.16')
+    compile("org.springframework.boot:spring-boot-starter-security")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
