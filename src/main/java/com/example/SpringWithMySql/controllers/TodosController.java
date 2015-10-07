@@ -101,7 +101,7 @@ public class TodosController extends ApplicationController {
 
         model.addAttribute("todos", getDao().getTodos());
 
-        redirectAttributes.addFlashAttribute("message)", "Record Deleted Successfully.");
+        redirectAttributes.addFlashAttribute("message", "Record Deleted Successfully.");
 
         return "redirect:/todos";
     }
